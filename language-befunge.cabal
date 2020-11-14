@@ -1,0 +1,79 @@
+cabal-version:       2.4
+name:                language-befunge
+version:             0.1.0.0
+synopsis: Befunge interpreter
+-- description:
+-- bug-reports:
+license:             MIT
+license-file:        LICENSE
+author:              Mark Martynov
+maintainer:          mark.martynov@yahoo.com
+-- copyright:
+category:            Language
+
+-- Extra files to be distributed with the package, such as examples or a
+-- README.
+extra-source-files:  
+  CHANGELOG.md
+  , README.md
+
+
+library
+  exposed-modules:     
+    Language.Befunge
+    , Language.Befunge.TH
+
+  other-modules:
+    Utils
+    , Language.Befunge.Types
+
+  default-extensions: 
+    InstanceSigs 
+    , ImportQualifiedPost
+    , ImportQualifiedPost
+    , DefaultSignatures
+    , OverloadedStrings
+    , DerivingStrategies 
+    , MultiWayIf
+
+  build-depends:       
+    base ^>=4.14.1.0
+    , relude
+    , extra
+    , template-haskell
+    , text
+    , random
+    , transformers
+    , mtl
+
+  mixins:
+    base hiding (Prelude)
+    , relude (Relude as Prelude)
+
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+
+
+executable language-befunge
+  main-is:             Main.hs
+  default-extensions:
+    QuasiQuotes
+  build-depends:       
+    base ^>=4.14.1.0
+    , random
+    , language-befunge
+
+  hs-source-dirs:      app
+  default-language:    Haskell2010
+
+
+test-suite language-befunge-test
+  default-language:    Haskell2010
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Main.hs
+  build-depends:       
+    base ^>=4.14.1.0
+    , random
+    , language-befunge
+
