@@ -5,12 +5,11 @@ module Language.Befunge
   )
 where
 
-import Data.Char (chr, digitToInt, ord)
-import Data.List (lines, (!!))
+import Data.Char (digitToInt)
+import Data.List (lines)
 import Data.Text (singleton)
 import Language.Befunge.Types
 import System.Random
-import Utils
 import Prelude hiding (lines)
 
 data Direction = L | R | U | D
