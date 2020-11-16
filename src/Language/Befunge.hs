@@ -97,9 +97,9 @@ mvD = mv D
 mvRnd :: Monad m => StateT InterprData m ()
 mvRnd = do
   dt <- get
-  let min = fromEnum (minBound :: Direction)
-  let max = fromEnum (maxBound :: Direction)
-  let (i, gen) = randomR (min, max) (stdGen dt)
+  let min' = fromEnum (minBound :: Direction)
+  let max' = fromEnum (maxBound :: Direction)
+  let (i, gen) = randomR (min', max') (stdGen dt)
   put (dt {stdGen = gen, direction = toEnum i})
 
 mvHVar :: Monad m => StateT InterprData m ()

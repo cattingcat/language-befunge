@@ -1,1 +1,2 @@
 :set -XTemplateHaskell -XQuasiQuotes
+:set -fprint-unicode-syntax

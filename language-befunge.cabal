@@ -36,6 +36,14 @@ library
     , DerivingStrategies 
     , MultiWayIf
 
+  ghc-options:
+    -Wcompat
+    -Wall
+    -Wmissing-export-lists
+    -Wincomplete-uni-patterns
+    -Wincomplete-patterns
+    -Wno-unused-matches
+
   build-depends:       
     base ^>=4.14.1.0
     , relude
