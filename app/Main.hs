@@ -8,6 +8,7 @@ main = do
   putStrLn countStr
   putStrLn helloWorldStr
   putStrLn fibStr
+  putStrLn tst
 
 countStr :: String
 countStr =

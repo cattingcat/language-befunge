@@ -10,6 +10,12 @@ author:              Mark Martynov
 maintainer:          mark.martynov@yahoo.com
 -- copyright:
 category:            Language
+homepage:            https://github.com/cattingcat/language-befunge
+bug-reports:         https://github.com/cattingcat/language-befunge/issues
+
+source-repository head
+  type:              git
+  location:          https://github.com/cattingcat/language-befunge.git
 
 -- Extra files to be distributed with the package, such as examples or a
 -- README.
@@ -17,15 +23,10 @@ extra-source-files:
   CHANGELOG.md
   , README.md
 
-
-library
-  exposed-modules:     
-    Language.Befunge
-    , Language.Befunge.TH
-
-  other-modules:
-    Utils
-    , Language.Befunge.Types
+common com
+  build-depends:       
+    base ^>=4.14.1.0
+    , relude
 
   default-extensions: 
     InstanceSigs 
@@ -44,25 +45,34 @@ library
     -Wincomplete-patterns
     -Wno-unused-matches
 
+  mixins:
+    base hiding (Prelude)
+    , relude (Relude as Prelude)
+
+library
+  import: com
+  exposed-modules:     
+    Language.Befunge
+    , Language.Befunge.TH
+
+  other-modules:
+    Utils
+    , Language.Befunge.Types
+
   build-depends:       
-    base ^>=4.14.1.0
-    , relude
-    , extra
+    extra
     , template-haskell
     , text
     , random
     , transformers
     , mtl
 
-  mixins:
-    base hiding (Prelude)
-    , relude (Relude as Prelude)
-
   hs-source-dirs:      src
   default-language:    Haskell2010
 
 
 executable language-befunge
+  import: com
   main-is:             Main.hs
   default-extensions:
     QuasiQuotes
@@ -76,6 +86,7 @@ executable language-befunge
 
 
 test-suite language-befunge-test
+  import: com
   default-language:    Haskell2010
   type:                exitcode-stdio-1.0
   hs-source-dirs:      test
