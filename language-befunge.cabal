@@ -25,7 +25,7 @@ extra-source-files:
 
 common com
   build-depends:       
-    base ^>=4.14.1.0
+    base ^>=4.15.0.0
     , relude
 
   default-extensions: 
@@ -77,7 +77,7 @@ executable language-befunge
   default-extensions:
     QuasiQuotes
   build-depends:       
-    base ^>=4.14.1.0
+    base ^>=4.15.0.0
     , random
     , language-befunge
 
